@@ -180,8 +180,18 @@ if(isset($_POST["action"]))
 		";
 		$statement = mysqli_query($connect, $query);
 		var_dump($statement);
-		if($statement)
+		if($statement == true)
 		{
+			$query2 = "
+			DELETE FROM tbl_department
+			WHERE dept_id='".$_POST["dept_id"]."'
+			";
+			$statement2 = mysqli_query($connect, $query2);
+			if($statement2){
+				echo 'Data Deleted Successfully';
+			}
+		}
+		else if($statement){
 			echo 'Data Deleted Successfully';
 		}
 	}
