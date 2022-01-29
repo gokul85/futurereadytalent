@@ -146,7 +146,7 @@ include("values.php");
 
       <!-- Modal body -->
       <div class="modal-body">
-        <h3 align="center">Are you sure you want to remove this?</h3>
+        <h2 align="center">If you delete the Department it will all the delete the datas related to department <br>Are you sure you want to remove this?</h2>
       </div>
 
       <!-- Modal footer -->
