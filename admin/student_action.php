@@ -224,8 +224,9 @@ if(isset($_POST["action"]))
 	if($_POST["action"] == "delete")
 	{
 		$query = "
-		DELETE FROM tbl_student 
-		WHERE student_id = '".$_POST["student_id"]."'
+		DELETE tbl_student, tbl_attendance 
+		FROM tbl_student INNER JOIN tbl_attendance 
+		WHERE tbl_attendance.student_id = tbl_student.student_id AND tbl_student.student_id='".$_POST["student_id"]."'
 		";
 		$statement = mysqli_query($connect, $query);
 		if($statement)

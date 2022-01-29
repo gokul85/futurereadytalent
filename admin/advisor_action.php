@@ -389,8 +389,9 @@ if(isset($_POST["action"]))
 		// 	echo 'Data Deleted Successfully';
 		// }
 		$query = "
-		DELETE FROM tbl_advisor 
-		WHERE advisor_id = '".$_POST["advisor_id"]."'
+		DELETE tbl_advisor, tbl_student, tbl_attendance 
+		FROM tbl_advisor INNER JOIN tbl_student INNER JOIN tbl_attendance 
+		WHERE tbl_student.student_dept_id = tbl_advisor.advisor_dept_id AND tbl_attendance.student_id = tbl_student.student_id AND tbl_advisor.advisor_id='".$_POST["advisor_id"]."'
 		";
 		$statement = mysqli_query($connect, $query);
 		if($statement)
