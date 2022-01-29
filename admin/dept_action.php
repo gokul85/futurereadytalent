@@ -179,6 +179,7 @@ if(isset($_POST["action"]))
 		WHERE tbl_advisor.advisor_dept_id = tbl_department.dept_id AND tbl_student.student_dept_id = tbl_department.dept_id AND tbl_attendance.student_id = tbl_student.student_id AND tbl_department.dept_id='".$_POST["dept_id"]."'
 		";
 		$statement = mysqli_query($connect, $query);
+		var_dump($statement);
 		if($statement)
 		{
 			echo 'Data Deleted Successfully';
