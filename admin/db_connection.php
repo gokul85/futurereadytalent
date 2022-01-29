@@ -75,7 +75,7 @@ function load_advisor_dept($connect,$advisor_dept_val)
 	$statement = mysqli_query($connect, $query);
 	$output = '';
 	while($row = mysqli_fetch_assoc($statement)){
-    	if($row["dept_id"] == "20CECS"){
+    	if($row["dept_id"] == $advisor_dept_val){
 			$output .= '<option value="'.$row["dept_id"].'">'.$row["dept_year"].' Year '.$row["dept_name"].'</option>';
 		}
 	}
