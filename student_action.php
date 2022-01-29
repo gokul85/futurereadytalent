@@ -226,9 +226,19 @@ if(isset($_POST["action"]))
 		WHERE tbl_attendance.student_id = tbl_student.student_id AND tbl_student.student_id='".$_POST["student_id"]."'
 		";
 		$statement = mysqli_query($connect, $query);
-		if($statement)
+		if($statement == true)
 		{
-			echo 'Data Delete Successfully';
+			$query2 = "
+			DELETE FROM tbl_student
+			WHERE student_id='".$_POST["student_id"]."'
+			";
+			$statement2 = mysqli_query($connect, $query2);
+			if($statement2){
+				echo 'Data Deleted Successfully';
+			}
+		}
+		else if($statement){
+			echo 'Data Deleted Successfully';
 		}
 	}
 }
