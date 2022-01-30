@@ -30,7 +30,7 @@ function get_total_records($connect, $table_name)
 	// $statement->execute();
 	// return $statement->rowCount();
 
-	$statement  = mysqli_query($connect, "SELECT * FROM tbl_advisor");
+	$statement  = mysqli_query($connect, "SELECT * FROM $table_name");
 	return mysqli_num_rows($statement);
 }
 
