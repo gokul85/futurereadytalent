@@ -23,14 +23,14 @@ if (mysqli_connect_errno())
 
 date_default_timezone_set("Asia/Calcutta");
 
-function get_total_records($connect, $table_name)
+function get_total_records($connect, $table_name, $final_query)
 {
 	$query = "SELECT * FROM $table_name";
 	// $statement = $connect->prepare($query);
 	// $statement->execute();
 	// return $statement->rowCount();
 
-	$statement  = mysqli_query($connect, "SELECT * FROM $table_name");
+	$statement  = mysqli_query($connect, $final_query);
 	return mysqli_num_rows($statement);
 }
 

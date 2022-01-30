@@ -40,6 +40,7 @@ if(isset($_POST["action"]))
 			ORDER BY tbl_student.student_id ASC 
 			';
 		}
+		$final_query = $query;
 		if($_POST["length"] != -1)
 		{
 			$query .= 'LIMIT ' . $_POST['start'] . ', ' . $_POST['length'];
@@ -66,7 +67,7 @@ if(isset($_POST["action"]))
 		$output = array(
 			"draw"				=>	intval($_POST["draw"]),
 			"recordsTotal"		=> 	$filtered_rows,
-			"recordsFiltered"	=>	get_total_records($connect, 'tbl_student'),
+			"recordsFiltered"	=>	get_total_records($connect, 'tbl_student', $final_query),
 			"data"				=>	$data
 		);
 

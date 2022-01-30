@@ -24,6 +24,7 @@ if(isset($_POST["action"]))
 		{
 			$query .= 'ORDER BY dept_id DESC ';
 		}
+		$final_query = $query;
 		if($_POST["length"] != -1)
 		{
 			$query .= 'LIMIT ' . $_POST['start'] . ', ' . $_POST['length'];
@@ -47,7 +48,7 @@ if(isset($_POST["action"]))
 		$output = array(
 			"draw"			=>	intval($_POST["draw"]),
 			"recordsTotal"		=> 	$filtered_rows,
-			"recordsFiltered"	=>	get_total_records($connect, 'tbl_department'),
+			"recordsFiltered"	=>	get_total_records($connect, 'tbl_department', $final_query),
 			"data"				=>	$data
 		);
 

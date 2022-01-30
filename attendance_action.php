@@ -40,7 +40,7 @@ if(isset($_POST["action"]))
 			ORDER BY tbl_attendance.attendance_id DESC 
 			';
 		}
-
+		$final_query = $query;
 		if($_POST["length"] != -1)
 		{
 			$query .= 'LIMIT ' . $_POST['start'] . ', ' . $_POST['length'];
@@ -74,7 +74,7 @@ if(isset($_POST["action"]))
 		$output = array(
 			'draw'				=>	intval($_POST["draw"]),
 			"recordsTotal"		=> 	$filtered_rows,
-			"recordsFiltered"	=>	get_total_records($connect, 'tbl_attendance'),
+			"recordsFiltered"	=>	get_total_records($connect, 'tbl_attendance', $final_query),
 			"data"				=>	$data
 		);
 
@@ -196,7 +196,7 @@ if(isset($_POST["action"]))
 			ORDER BY tbl_student.student_id ASC 
 			';
 		}
-
+		$final_query = $query;
 		if($_POST["length"] != -1)
 		{
 			$query .= 'LIMIT ' . $_POST['start'] . ', ' . $_POST['length'];
@@ -221,7 +221,7 @@ if(isset($_POST["action"]))
 		$output = array(
 			'draw'					=>	intval($_POST["draw"]),
 			"recordsTotal"		=> 	$filtered_rows,
-			"recordsFiltered"	=>	get_total_records($connect, 'tbl_student'),
+			"recordsFiltered"	=>	get_total_records($connect, 'tbl_student', $final_query),
 			"data"				=>	$data
 		);
 		echo json_encode($output);

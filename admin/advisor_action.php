@@ -35,6 +35,7 @@ if(isset($_POST["action"]))
 			ORDER BY tbl_advisor.advisor_id DESC 
 			';
 		}
+		$final_query = $query;
 		if($_POST["length"] != -1)
 		{
 			$query .= 'LIMIT ' . $_POST['start'] . ', ' . $_POST['length'];
@@ -71,7 +72,7 @@ if(isset($_POST["action"]))
 		$output = array(
 			"draw"				=>	intval($_POST["draw"]),
 			"recordsTotal"		=> 	$filtered_rows,
-			"recordsFiltered"	=>	get_total_records($connect, 'tbl_advisor'),
+			"recordsFiltered"	=>	get_total_records($connect, 'tbl_advisor', $final_query),
 			"data"				=>	$data
 		);
 		echo json_encode($output);
