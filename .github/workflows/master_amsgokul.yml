@@ -56,5 +56,5 @@ jobs:
         with:
           app-name: 'amsgokul'
           slot-name: 'Production'
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_68E796C8B6064D379B2E1C73821360E3 }}
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_BB63A198912A44688D194674B8594911 }}
           package: .
